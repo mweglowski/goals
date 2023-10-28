@@ -1,22 +1,36 @@
-import './App.css'
+import { useState } from 'react'
 
-function App() {
+import Goal from './components/Goal.tsx'
+import Header from './components/Header.tsx'
+import goalsImg from './assets/react.svg'
+
+type Goal = {
+  title: string;
+  description: string;
+  id: number;
+}
+
+const App = () => {
+  const [goals, setGoals] = useState<Array<Goal>>([]);
+
+  const addGoalHandler = (newGoal: Goal) => {
+    setGoals((prevGoals: Array<Goal>) => {
+      return { ...prevGoals, newGoal }
+    })
+  }
+
   return (
     <>
-      <div className='border-x-4 w-full max-w-[600px] m-auto'>
-        <h1 className='font-bold text-3xl'>GOALS</h1>
-        <div>here is form</div>
-        <div className='p-4'>
-          <div className='border-2 flex justify-between p-2 items-center'>
-            <div className='flex flex-col text-left'>
-              <div className='text-xl'>TypeScript</div>
-              <div>description is hereee</div>
-            </div>
-            <div className='flex gap-2'>
-              <div>Finished</div>
-              <div>Delete</div>
-            </div>
-          </div>
+      <div className='border-x-4 w-full max-w-[600px] m-auto mt-6 hover:border-cyan-400 duration-300 flex flex-col'>
+        <Header image={{ src: goalsImg, alt: "List of goals" }}>
+          <h1 className='font-bold text-3xl text-center'>GOALS</h1>
+        </Header>
+
+        <button onClick={addGoalHandler} className=' text-cyan-400 font-bold py-3 px-16 mx-auto mt-11 border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black duration-300 '>NEW</button>
+
+        <div className='p-4 flex flex-col gap-2'>
+          <Goal title="TypeScript" description="React + TypeScript Maximilian Schwarzmueller" />
+          <Goal title="Express" description="Learn REST API, creating server, manage requests" />
         </div>
       </div>
     </>
