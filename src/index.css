@@ -2,16 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Gabarito&family=Tilt+Neon&display=swap');
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Tilt Neon", sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 body {
   background-color: rgb(0, 18, 27);
   color: white;
+}
+
+.gradient {
+  height: fit-content;
+  z-index: -1;
+  width: 80%;
+  max-width: 640px;
+  background-image: radial-gradient(
+      at 27% 37%,
+      hsla(215, 98%, 61%, 1) 0px,
+      transparent 0%
+    ),
+    radial-gradient(at 97% 21%, cyan 0px, transparent 50%),
+    radial-gradient(at 52% 99%, cyan 0px, transparent 50%),
+    radial-gradient(at 10% 29%, cyan 0px, transparent 50%);
+  position: absolute;
+  content: "";
+  width: 80%;
+  height: 80%;
+  filter: blur(70px) saturate(60%);
+  opacity: 0.1;
 }
