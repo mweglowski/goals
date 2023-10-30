@@ -33,7 +33,7 @@ const App = () => {
           <h1 className="font-bold text-3xl text-center custom-font">Goals</h1>
         </Header>
 
-        <NewGoal onAdd={addGoalHandler} />
+        <NewGoal onAddGoal={addGoalHandler} />
 
         <GoalList goals={goals} onDeleteGoal={deleteGoalHandler} />
       </div>

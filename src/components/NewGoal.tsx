@@ -2,14 +2,16 @@ import { type FormEvent, useRef } from "react";
 import { type Goal } from "../App";
 
 type NewGoalProps = {
-  onAdd: (goal: Goal) => void;
+  onAddGoal: (goal: Goal) => void;
 };
 
-const NewGoal = ({ onAdd }: NewGoalProps) => {
+const NewGoal = ({ onAddGoal }: NewGoalProps) => {
   const titleInputRef = useRef<HTMLInputElement>(null); // initial value in useRef in undefined, so we assigning it to null
   const descriptionInputRef = useRef<HTMLInputElement>(null);
 
-  const addGoalHandler = () => {
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     const title = titleInputRef.current!.value; // ! - this value will never be null, if it will be null, app will crush
     const description = descriptionInputRef.current!.value;
 
@@ -20,14 +22,11 @@ const NewGoal = ({ onAdd }: NewGoalProps) => {
       title,
       description,
     };
-
-    onAdd(newGoal);
-    titleInputRef.current!.value = "";
-    descriptionInputRef.current!.value = "";
-  };
-
-  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    
+    onAddGoal(newGoal);
+    // titleInputRef.current!.value = "";
+    // descriptionInputRef.current!.value = "";
+    event.currentTarget.reset();
   };
 
   return (
@@ -52,8 +51,8 @@ const NewGoal = ({ onAdd }: NewGoalProps) => {
       </div>
 
       <button
-        onClick={addGoalHandler}
-        className="bg-[#00121B]/50 font-bold py-3 px-16 mt-4 mx-auto text-slate-300 border-2 border-transparent hover:border-cyan-700 hover:text-cyan-500 duration-300 rounded-md hover:shadow-md"
+        type="submit"
+        className="bg-[#00121B]/50 font-bold py-3 px-16 mt-4 mx-auto text-slate-300 border-2 border-transparent hover:border-cyan-700 hover:text-cyan-500 duration-300 rounded-md hover:shadow-md focus:text-cyan-500 outline-none focus:border-cyan-700"
       >
         Add
       </button>

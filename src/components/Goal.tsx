@@ -19,9 +19,9 @@ const Goal = ({ id, title, description, onDelete }: GoalProps) => {
   }
 
   return (
-    <div className='border-2 border-transparent flex justify-between p-2 items-center hover:border-cyan-700 duration-300 rounded-md bg-[#00121B]/50 backdrop-blue-lg'>
+    <div className='border-2 border-transparent flex justify-between p-2 items-center hover:border-cyan-700 duration-300 rounded-md bg-[#00121B]/50 shadow-md shadow-[#83fbff12]'>
       <div className='flex flex-col text-left'>
-        <div className='text-xl fond-bold text-slate-300'>{title}</div>
+        <div className='text-xl font-bold text-slate-300'>{title}</div>
         <div className="text-slate-500">{description}</div>
       </div>
       <div className='flex gap-2 mr-2'>
