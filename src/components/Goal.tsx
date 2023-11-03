@@ -25,7 +25,7 @@ const Goal = ({ id, title, description, onDelete }: GoalProps) => {
         <div className="text-slate-500">{description}</div>
       </div>
       <div className='flex gap-2 mr-2'>
-        <button className='hover:text-cyan-400 duration-300 text-slate-300'>Finished</button>
+        <button onClick={deleteGoalHandler} className='hover:text-cyan-400 duration-300 text-slate-300'>Finished</button>
         <button onClick={deleteGoalHandler} className='hover:text-red-500 duration-300 text-slate-300'>Delete</button>
       </div>
     </div>
